@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EasyTravel</title>
+    <link rel="stylesheet" href="/css/itinerary.css" />
+    <script src="itinerary.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>EasyPlan</h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact Us</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form name="form">
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+          <option value selected disabled>--Choose country--</option>
+          <option value="canada">Canada</option>
+        </select>
+        <label for="province"> Province: </label>
+        <select id="province" name="province">
+          <option value selected disabled>--Choose province--</option>
+          <option value="quebec">Quebec</option>
+          <option value="ontario">Ontario</option>
+        </select>
+        <label for="city">City:</label>
+        <select id="city" name="city" id="city">
+          <option value selected disabled>--choose city--</option>
+          <!--<option value="toronto">Toronto</option>
+        <option value="hamilton">Hamilton</option>
+        <option value="montreal">Montreal</option>-->
+        </select>
+      </form>
+    </main>
+  </body>
+</html>
