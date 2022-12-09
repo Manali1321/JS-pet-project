@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>EasyTravel</title>
     <link rel="stylesheet" href="/css/itinerary.css" />
-    <script src="itinerary.js"></script>
+    <script src="itinerary.js" async defer></script>
   </head>
   <body>
     <header>
@@ -18,26 +18,68 @@
       </nav>
     </header>
     <main>
-      <form name="form">
-        <label for="country">Country:</label>
-        <select id="country" name="country">
-          <option value selected disabled>--Choose country--</option>
-          <option value="canada">Canada</option>
-        </select>
-        <label for="province"> Province: </label>
-        <select id="province" name="province">
-          <option value selected disabled>--Choose province--</option>
-          <option value="quebec">Quebec</option>
-          <option value="ontario">Ontario</option>
-        </select>
-        <label for="city">City:</label>
-        <select id="city" name="city" id="city">
-          <option value selected disabled>--choose city--</option>
-          <!--<option value="toronto">Toronto</option>
-        <option value="hamilton">Hamilton</option>
-        <option value="montreal">Montreal</option>-->
-        </select>
+      <form name="form" method="post">
+        <div id="selection">
+          <div>
+            <label for="province"> Province: </label>
+            <select id="province" name="province">
+              <option value="x" selected disabled>--Choose province--</option>
+              <option value="quebec" disabled>Quebec</option>
+              <option value="ontario">Ontario</option>
+            </select>
+          </div>
+          <div>
+            <label for="city">City:</label>
+            <select id="city" name="city" id="city">
+              <option value="x" selected disabled>--choose city--</option>
+            </select>
+          </div>
+        </div>
+        <div id="categories">
+          <input
+            type="checkbox"
+            id="historic"
+            name="categories"
+            value="historic"
+          />
+          <label for="historic">Historic</label>
+          <input
+            type="checkbox"
+            id="beaches"
+            name="categories"
+            value="beaches"
+          />
+          <label for="beaches">Beaches</label>
+          <input
+            type="checkbox"
+            id="adventure"
+            name="categories"
+            value="adventure"
+          />
+          <label for="adventure">Avdenture</label>
+          <input
+            type="checkbox"
+            id="restaurant"
+            name="categories"
+            value="restaurant"
+          />
+          <label for="restaurant">Restaurant</label>
+          <input
+            type="checkbox"
+            id="wildlife"
+            name="categories"
+            value="wildlife"
+          />
+          <label for="wildlife">Wildlife</label>
+        </div>
+        <button type="submit" value="submit" id="button">Submit</button>
       </form>
     </main>
+    <section>
+      <h3>
+        List of Destination:
+        <span id="name_of_place"></span>
+      </h3>
+    </section>
   </body>
 </html>
