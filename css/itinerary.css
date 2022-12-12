@@ -32,14 +32,9 @@ main {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-
 .style-block {
   display: grid;
 }
-/* #categories {
-  display: grid;
-  grid-template-columns: auto, auto, auto;
-} */
 #selection label {
   display: block;
 }
