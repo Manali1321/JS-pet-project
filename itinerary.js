@@ -194,6 +194,7 @@ function handleCityChange() {
     // console.log(userCity.value);
     for (var carry_province of provincePlaces) {
         if (carry_province.city == selectedCity.value) {
+
             // console.log(carry_province);
             cityPlaces.push(carry_province);
         }
@@ -229,15 +230,18 @@ function submitForm() {
         const categoryCheckboxes = document.querySelectorAll('input[name="categories"]:checked');
         selectedCategories = []
         categoryCheckboxes.forEach(category => {
-            selectedCategories.push(category.value)
+            selected_city_categories.push(category.value)
         })
 
         result_filter.style.display = 'block';
-
-        var nameOfPlace = document.getElementById("detail");
-        let htmlData = '';
-        selected_city_categories.forEach(place => {
-            htmlData += `
+        if (selectedCategories.length === 0) {
+            result_filter.innerHTML = "No Result Found";
+            result_filter.classList.add('notfound');
+        } else {
+            var htmlData = '';
+            var nameOfPlace = document.getElementById("detail");
+            selected_city_categories.forEach(place => {
+                htmlData += `
             <div class="wrapper">
             <div class="place-details">
             <p class= "name"> Name of Place : ${place.name}</p>
@@ -252,11 +256,11 @@ function submitForm() {
             <div><img src=" ${place.photo} "></div>
             </div>
             `
-        })
+            })
 
-        nameOfPlace.innerHTML = htmlData;
+            nameOfPlace.innerHTML = htmlData;
 
-
+        }
 
     };
 

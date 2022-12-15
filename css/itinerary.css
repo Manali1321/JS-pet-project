@@ -88,7 +88,6 @@ header {
 /* slides */
 #slide-wrapper {
   position: relative;
-  width: fit-content;
 }
 .dot {
   height: 15px;
@@ -121,7 +120,7 @@ header {
 }
 
 .mySlides img {
-  width: 100vw;
+  width: 100%;
   height: 60vh;
 }
 #inroduction {
@@ -147,3 +146,7 @@ footer p {
 #hide h2 {
   padding: 10px 25px;
 }
+.notfound{
+  color: rgba(255, 0, 0, 0.817);
+text-align: center;
+font-size: 26px;}
