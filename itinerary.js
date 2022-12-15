@@ -4,121 +4,158 @@ formHandle.onsubmit = submitForm;
 var name_of_place = document.getElementById('name_of_place');
 var selectedCity = document.getElementById('city');
 var selectedProvince = document.getElementById('province');
+var result_filter = document.getElementById('hide');
 
 const allPlaces = [
     {
         name: 'Fort York National Historic Site',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '11am-4pm',
         Booking_information: 'Not Needed',
-        Admission_charge: 'free',
+        Admission_charge: 'Free',
         Address: '250 Fort York Blvd, Toronto, ON M5V 3K9',
-        type: 'historic'
+        type: 'Historic',
+        // Source: https://www.google.com/search?sxsrf=ALiCzsZW_xvath9NmIVcD8AVs-otp9Di0A:1671098655032&q=fort+york+national+historic+site+image&tbm=isch&chips=q:fort+york+national+historic+site+image,online_chips:york+toronto:kaUTryCcSes%3D&usg=AI4_-kRyJ3bfTgdiNHWmpU3MK5Rp4cMMRQ&sa=X&ved=2ahUKEwj02d7Nr_v7AhUhVd8KHW2mCmoQgIoDKAF6BAgHEBU&biw=822&bih=984&dpr=2#imgrc=ab5-jyjoPZADSM
+        photo: './Image/result_image/fort.webp'
     }, {
         name: 'Historical Plaque - Queen`s Park',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '24 hour',
         Booking_information: 'Not Needed',
-        Admission_charge: 'free',
+        Admission_charge: 'Free',
         Address: 'Unnamed Road, Toronto, ON',
-        type: 'historic'
+        type: 'Historic',
+        // Sourc: https://www.google.com/search?q=Historical+Plaque+-+Queens+Park&sxsrf=ALiCzsYyyuN8gwUVS_ffVKeL90BgYhyAsw:1671099173770&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi-8ovFsfv7AhWNZN8KHSGyD7QQ_AUoAnoECAEQBA&biw=822&bih=984&dpr=2#imgrc=esjaHXVdpsBySM&imgdii=uoU4jCSCTTvqsM
+        photo: './Image/result_image/queen.jpeg'
     },
     {
         name: 'Cherry Beach',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '24 hour',
         Booking_information: 'Not Needed',
-        Admission_charge: 'free',
+        Admission_charge: 'Free',
         Address: 'Unwin Avenue, Toronto, ON',
-        type: 'beaches'
+        type: 'Beaches',
+        // Source: https://www.google.com/search?q=name:+%27Cherry+Beach%27,&sxsrf=ALiCzsayBrWv31GE10Pzc11k8N8zaKky6g:1671099320985&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiak6WLsvv7AhXELFkFHUhbA98Q_AUoAXoECAEQAw&biw=822&bih=984&dpr=2#imgrc=1mtHt3nUqZtAkM
+        photo: './Image/result_image/cherry.jpeg'
     },
     {
         name: 'Toronto Island Park',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '7am-8pm',
         Booking_information: 'https://secure.toronto.ca/FerryTicketOnline/tickets2/index.jsp',
         Admission_charge: '8.95$',
         Address: 'Centre Island Ferry Dock, Toronto, ON',
-        type: 'beaches'
+        type: 'Beaches',
+        // Source: https://www.google.com/search?q=toronto+island+park+image&sxsrf=ALiCzsb3__Qoln_w7Kx2_OTUG_QwPZVmxg%3A1671099451565&ei=O_SaY5OQIqDU5NoPkOKz6AQ&ved=0ahUKEwjTmcfJsvv7AhUgKlkFHRDxDE0Q4dUDCA8&uact=5&oq=toronto+island+park+image&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIGCAAQFhAeMgUIABCGAzIFCAAQhgMyBQgAEIYDMgUIABCGAzoKCAAQRxDWBBCwAzoHCAAQsAMQQzoNCAAQ5AIQ1gQQsAMYAToMCC4QyAMQsAMQQxgCOhIILhDHARCvARDIAxCwAxBDGAI6BQgAEIAEOgsILhCvARDHARCABDoJCAAQFhAeEPEEOgIIJjoFCCEQoAE6BAghEBVKBAhBGABKBAhGGAFQpAZY2CNgwiVoBHAAeACAAW2IAdoGkgEDNS40mAEAoAEByAETwAEB2gEGCAEQARgJ2gEGCAIQARgI&sclient=gws-wiz-serp#imgrc=HLmSxKm-rfyLPM
+        photo: './Image/result_image/central.jpeg'
+
     },
     {
         name: 'Centreville Amusement Park',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '10:30am-07:00pm',
         Booking_information: 'https://www.centreisland.ca/centreville-amusement-park/ticket-packges',
         Admission_charge: '79.65$',
         Address: '9 Queens Quay W, Toronto, ON M5J 2H3',
-        type: 'adventure'
+        type: 'Adventure',
+        // Source: https://www.google.com/search?q=centreville+amusement+park&sxsrf=ALiCzsaAUKebowM1VoO5eE6DQPFkNGXqqA:1671099579283&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiLv7qGs_v7AhVjTt8KHbUuASAQ_AUoAXoECAEQAw&biw=822&bih=984&dpr=2
+        photo: './Image/result_image/centreville-amusement.jpg'
     },
     {
         name: 'Canada’s Wonderland',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '5pm to 10pm',
         Booking_information: 'https://www.canadaswonderland.com/events/winterfest/tickets',
         Admission_charge: 'Winterfest: 29.99$',
         Address: '1 Canada`s Wonderland Drive, Vaughan, ON L6A 1S6',
-        type: 'adventure'
+        type: 'Adventure',
+        // Source:https://www.google.com/search?q=wonderland+toronto&sxsrf=ALiCzsbgUXnAns8ZuRCT4raDrl6OIPHl6g:1671089682171&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjD2ZKXjvv7AhVOFlkFHYxZCxsQ_AUoAnoECAEQBA&biw=727&bih=984&dpr=2#imgrc=rYVnhCjdqmhJtM
+        photo: './Image/wonderland.png'
     },
     {
         name: 'The Old Spaghetti Factory',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '12pm to 10pm',
         Booking_information: 'Not needed',
         Admission_charge: 'AS your order',
         Address: '54 The Esplanade, Toronto, ON M5E 1A6',
-        type: 'restaurant'
+        type: 'Restaurant',
+        // Source: https://www.blogto.com/restaurants/oldspaghettifactory/
+        photo: './Image/result_image/old.webp'
+
     },
     {
         name: 'Elephant & Castle',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '9:30am to 1am',
         Booking_information: 'Not needed',
         Admission_charge: 'AS your order',
         Address: '212 King St W, Toronto, ON M5H 1K5',
-        type: 'restaurant'
+        type: 'Restaurant',
+        // Source:https://www.tripadvisor.co.uk/LocationPhotoDirectLink-g186338-d3239928-i66066348-The_Elephant_Castle_Pub-London_England.html
+        photo: './Image/result_image/castle.jpeg'
     },
     {
         name: 'Toronto Zoo',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '9:30am-4:30pm',
         Booking_information: 'https://www.torontozoo.com/',
         Admission_charge: '22.20$',
         Address: '2000 Meadowvale Rd, Toronto, ON M1B 5K7',
-        type: 'wildlife'
+        type: 'Wildlife',
+        // https://www.google.com/search?q=https://www.toronto+zoo+photo&sxsrf=ALiCzsaeRlohbTRH1-qlDxp9FZUyDszCCw:1671100350977&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjl8Lb2tfv7AhUdFVkFHcAtBLYQ_AUoAXoECAEQAw&biw=656&bih=984&dpr=2#imgrc=4kx7OtTTW9AXdM
+        photo: './Image/result_image/zoo.jpeg'
     },
     {
         name: 'Ripley`s Aquarium of Canada',
-        city: 'toronto',
-        Province: 'ontario',
+        city: 'Toronto',
+        Province: 'Ontario',
         Open_hours: '9am-9pm',
         Booking_information: 'https://www.ripleyaquariums.com/canada/',
         Admission_charge: '44.00$',
         Address: '288 Bremner Blvd, Toronto, ON M5V 3L9',
-        type: 'wildlife'
+        type: 'Wildlife',
+        //  Source: https://www.ripleyaquariums.com/canada/files/2013/03/RipleysAquarium-MoonJellies.jpeg
+        photo: './Image/jellyfish.jpeg'
+
     },
     {
-        name: 'brampton',
-        city: 'brampton',
-        Province: 'ontario',
-        type: 'wildlife'
+        name: 'Honest Restaurant',
+        city: 'Brampton',
+        Province: 'Ontario',
+        Open_hours: '11:30am-10pm',
+        Booking_information: 'Not needed',
+        Admission_charge: 'Depends on order',
+        Address: '1 Steeles Ave East Brampton, Ontario L6W 4J4',
+        type: 'Restaurant',
+        // Source: https://www.google.com/search?q=honest+brampton+photo&sxsrf=ALiCzsZyY6CYle2TUjnUuxDAcl8ZYFBTLw:1671100469195&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjyteautvv7AhXpLFkFHRxTAOoQ_AUoAnoECAEQBA&biw=656&bih=984&dpr=2
+        photo: './Image/result_image/honest.jpeg'
     },
     {
-        name: 'hamilton',
-        city: 'hamilton',
-        Province: 'ontario',
-        type: 'beaches'
+        name: 'Treetop Trekking Hamilton',
+        city: 'Hamilton',
+        Province: 'Ontario',
+        Open_hours: '10am-4pm',
+        Booking_information: 'Not needed',
+        Admission_charge: 'Free',
+        Address: '5050 Harrison Rd, Binbrook, ON L0R 1C0',
+        type: 'Adventure',
+        // Source: https://www.google.com/search?q=treetop+trekking+hamilton&sxsrf=ALiCzsZbM1z0nXrlyrN3FCJOzY1ycyqXcQ:1671100589385&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjSn47otvv7AhWrdt8KHQ6kAZAQ_AUoAnoECAIQBA&biw=656&bih=984&dpr=2#imgrc=W5xEIWu7uD3NOM
+        photo: './Image/result_image/trekking.jpeg'
     },
 ];
 
+result_filter.style.display = 'none';
 
 var cityOptions = [];
 var provincePlaces = [];
@@ -127,8 +164,8 @@ var selectedCategories = []
 
 selectedProvince.addEventListener('change', handleProvinceChange);
 function handleProvinceChange() {
-    if (selectedProvince.value == 'ontario') {
-        cityOptions = ['hamilton', 'brampton', 'toronto']
+    if (selectedProvince.value == 'Ontario') {
+        cityOptions = ['Hamilton', 'Brampton', 'Toronto']
     }
 
     //this is not going to effect cause of quebec is not selected
@@ -194,26 +231,31 @@ function submitForm() {
         categoryCheckboxes.forEach(category => {
             selectedCategories.push(category.value)
         })
+
+        result_filter.style.display = 'block';
+
         var nameOfPlace = document.getElementById("detail");
         let htmlData = '';
         selected_city_categories.forEach(place => {
             htmlData += `
             <div class="wrapper">
-            <p class= "name">Name of Place : ${place.name}</p>
             <div class="place-details">
+            <p class= "name"> Name of Place : ${place.name}</p>
             <p class="place-detail"><b>Type of building:</b> ${place.type}</p>
-            <p class="place-detail">Location: ${place.Address}</p>
-            <p class="place-detail">Name of City: ${place.city}</p>
-            <p class="place-detail">Name of Province: ${place.Province}</p>
-            <p class="place-detail">Business Hours: ${place.Open_hours}</p>
-            <p class="place-detail">Booking Link: ${place.Booking_information} </p>
-            <p class="place-detail">Admission Charge: ${place.Admission_charge}</p>
+            <p class="place-detail"><b>Location: </b>${place.Address}</p>
+            <p class="place-detail"><b>Name of City: </b>${place.city}</p>
+            <p class="place-detail"><b>Name of Province: </b>${place.Province}</p>
+            <p class="place-detail"><b>Business Hours: </b>${place.Open_hours}</p>
+            <p class="place-detail"><b>Booking Link: </b>${place.Booking_information} </p>
+            <p class="place-detail"><b>Admission Charge: </b>${place.Admission_charge}</p>
             </div>
+            <div><img src=" ${place.photo} "></div>
             </div>
             `
         })
 
-        nameOfPlace.innerHTML = htmlData
+        nameOfPlace.innerHTML = htmlData;
+
 
 
     };
