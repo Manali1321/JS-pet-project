@@ -3,12 +3,9 @@
   margin: 0;
   padding: 0;
 }
-body {
-  font-family: "Cairo Play", cursive;
-  margin: 25px 50px;
-}
+
 h1 {
-  font-family: "Shojumaru", cursive;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   letter-spacing: 2px;
 }
 li {
@@ -37,4 +34,60 @@ main {
 }
 #selection label {
   display: block;
+}
+.name {
+  font-size: 26px;
+  font-weight: 600;
+}
+.place-detail {
+  font-size: 20px;
+  font-weight: 400;
+}
+.wrapper {
+  background-color: rgb(222, 229, 241);
+  padding: 20px 25px;
+  border-radius: 20px;
+  margin: 15px 100px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.place-details {
+  padding: 10px 0;
+}
+/* slides */
+.slide-wrapper {
+  position: relative;
+  width: fit-content;
+}
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+#dots {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+}
+.active {
+  background-color: #7c7c7c;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.mySlides img {
+  width: 100vw;
+  height: 50vh;
 }
