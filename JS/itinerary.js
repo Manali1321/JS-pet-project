@@ -6,6 +6,7 @@ var selectedCity = document.getElementById('city');
 var selectedProvince = document.getElementById('province');
 var result_filter = document.getElementById('hide');
 
+// Save all place object in to array
 const allPlaces = [
     {
         name: 'Fort York National Historic Site',
@@ -155,13 +156,16 @@ const allPlaces = [
     },
 ];
 
+//when page load hide the result cards formate
 result_filter.style.display = 'none';
 
+// made any empty arrays to store the selected values
 var cityOptions = [];
 var provincePlaces = [];
 var cityPlaces = [];
-var selectedCategories = []
+var selectedCategories = [];
 
+// when change happen province selection value of city changing
 selectedProvince.addEventListener('change', handleProvinceChange);
 function handleProvinceChange() {
     if (selectedProvince.value == 'Ontario') {
@@ -173,7 +177,7 @@ function handleProvinceChange() {
         cityOptions = ['montreal', 'old quebec', 'ottawa']
     }
 
-    //pushing the selected city in html with loop
+    //pushing the selected multiple city in html with loop
     for (var i = 0; i < cityOptions.length; i++) {
         var opt = document.createElement('option');
         opt.value = cityOptions[i];
@@ -181,6 +185,7 @@ function handleProvinceChange() {
         selectedCity.appendChild(opt);
     }
 
+    // comparing value of province and filtering that value from places
     for (var place of allPlaces) {
         if (place.Province == selectedProvince.value) {
             provincePlaces.push(place);
@@ -188,14 +193,18 @@ function handleProvinceChange() {
     }
 }
 
+// when selection for city will changing in function will run
 selectedCity.addEventListener('change', handleCityChange);
 function handleCityChange() {
+
+    // if you change province once and again change clear array
     cityPlaces = []
-    // console.log(userCity.value);
+
+    // comparing value of city and filtering that value from places
     for (var carry_province of provincePlaces) {
         if (carry_province.city == selectedCity.value) {
 
-            // console.log(carry_province);
+            // pushing the filtered value in empty array
             cityPlaces.push(carry_province);
         }
     };
@@ -209,11 +218,19 @@ function submitForm() {
         selectedProvince.style.background = 'red';
     } else {
 
-
+        // if any user not selecting any city then filtered province array will be asign
         if (selectedCity.value === "x") {
             cityPlaces = provincePlaces;
         }
 
+        // taking value from checked categories and pushing into empty array
+        const categoryCheckboxes = document.querySelectorAll('input[name="categories"]:checked');
+        selectedCategories = []
+        categoryCheckboxes.forEach(category => {
+            selectedCategories.push(category.value)
+        })
+
+        // if user not selecting any categories filtered city array will be asign
         var selected_city_categories = [];
         if (selectedCategories.length === 0) {
             selected_city_categories = cityPlaces
@@ -227,19 +244,18 @@ function submitForm() {
             }
         }
 
-        const categoryCheckboxes = document.querySelectorAll('input[name="categories"]:checked');
-        selectedCategories = []
-        categoryCheckboxes.forEach(category => {
-            selected_city_categories.push(category.value)
-        })
 
+        // showing the result of selection
         result_filter.style.display = 'block';
-        if (selectedCategories.length === 0) {
+
+        // if any data is not matching as user not it will be not found
+        if (selected_city_categories.length === 0) {
             result_filter.innerHTML = "No Result Found";
             result_filter.classList.add('notfound');
         } else {
+            // inserting data into HTML
+            result_filter.classList.remove('notfound');
             var htmlData = '';
-            var nameOfPlace = document.getElementById("detail");
             selected_city_categories.forEach(place => {
                 htmlData += `
             <div class="wrapper">
@@ -258,16 +274,16 @@ function submitForm() {
             `
             })
 
-            nameOfPlace.innerHTML = htmlData;
+            result_filter.innerHTML = htmlData;
 
         }
 
     };
-
     return false;
 
 }
 
+// onload slideshow is working
 // reference from https://www.w3schools.com/howto/howto_js_slideshow.asp
 var slideIndex = 0;
 showSlides();
