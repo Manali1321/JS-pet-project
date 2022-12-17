@@ -116,11 +116,11 @@ header {
     opacity: 1;
   }
 }
-
 .mySlides img {
   width: 100%;
   height: 60vh;
 }
+
 #inroduction {
   color: black;
   font-weight: 800;
